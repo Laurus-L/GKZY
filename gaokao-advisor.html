@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 湖北高考 · 志愿策略报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --ink:#0B1D2E;
+  --ink-light:#1A3550;
+  --gold:#C49A3C;
+  --gold-light:#E8D5A0;
+  --paper:#F5F1EB;
+  --paper-dark:#EAE3D8;
+  --crimson:#C73E3A;
+  --crimson-bg:#FEF2F0;
+  --teal:#2A7A78;
+  --teal-bg:#F0F8F7;
+  --jade:#4A8C5C;
+  --jade-bg:#F3F9F4;
+  --card:#FFFFFF;
+  --text:#1A1A2E;
+  --text-secondary:#686880;
+  --text-muted:#9A9AB0;
+  --border:#E8E4DE;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 12px rgba(11,29,46,0.06);
+  --shadow-hover:0 8px 32px rgba(11,29,46,0.10);
+  --font-display:'Noto Serif SC', serif;
+  --font-body:'Noto Sans SC', sans-serif;
+  --font-num:'Inter', sans-serif;
+  --max-w:1120px;
+}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ========== HERO ========== */
+.hero{
+  background:linear-gradient(135deg, var(--ink) 0%, #132D44 60%, #1A3D5C 100%);
+  color:#fff;
+  padding:60px 24px 50px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  top:-40%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(196,154,60,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:1}
+.hero-label{
+  font-size:13px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:16px;font-weight:500;
+}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start}
+.hero-main{}
+.hero-score-wrapper{display:flex;align-items:baseline;gap:20px;margin-bottom:8px}
+.hero-score{
+  font-family:var(--font-num);
+  font-size:88px;font-weight:800;
+  line-height:1;
+  background:linear-gradient(135deg,#fff 30%,var(--gold-light) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-rank{
+  font-family:var(--font-num);
+  font-size:28px;font-weight:600;
+  color:var(--gold-light);
+}
+.hero-rank small{font-size:16px;font-weight:400;opacity:0.7}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+.hero-tag{
+  padding:4px 14px;border-radius:20px;font-size:13px;font-weight:500;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.9);
+}
+.hero-tag strong{color:var(--gold-light)}
+.hero-desc{
+  font-size:15px;color:rgba(255,255,255,0.7);
+  max-width:540px;line-height:1.8;
+}
+
+/* Hero sidebar — stat cards */
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.stat-card{
+  background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:16px 20px;
+  min-width:120px;text-align:center;
+}
+.stat-card .num{
+  font-family:var(--font-num);font-size:24px;font-weight:700;
+  display:block;line-height:1.2;
+}
+.stat-card .lbl{
+  font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px;
+}
+.stat-card.highlight .num{color:var(--gold-light)}
+
+/* Rank ladder */
+.rank-ladder{
+  display:flex;align-items:center;gap:0;
+  margin-top:28px;padding:20px 0 0;
+  border-top:1px solid rgba(255,255,255,0.08);
+  flex-wrap:wrap;
+}
+.ladder-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:rgba(255,255,255,0.5);
+  padding:4px 0;
+}
+.ladder-item .dot{
+  width:10px;height:10px;border-radius:50%;flex-shrink:0;
+  border:2px solid currentColor;
+}
+.ladder-item .dot.filled{background:currentColor}
+.ladder-item .bar{
+  width:24px;height:2px;background:rgba(255,255,255,0.12);flex-shrink:0;
+}
+.ladder-item .lbl{white-space:nowrap}
+.ladder-item.active{color:var(--gold-light)}
+.ladder-item.active .lbl{font-weight:600;color:#fff}
+
+/* ========== NAV ========== */
+.page-nav{
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 1px 4px rgba(0,0,0,0.04);
+}
+.nav-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;gap:0;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.nav-link{
+  display:block;padding:16px 20px;font-size:14px;font-weight:500;
+  color:var(--text-secondary);text-decoration:none;
+  border-bottom:2px solid transparent;
+  transition:all 0.2s;white-space:nowrap;
+  cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;
+  font-family:var(--font-body);
+}
+.nav-link:hover{color:var(--ink)}
+.nav-link.active{
+  color:var(--ink);border-bottom-color:var(--gold);
+}
+
+/* ========== SECTIONS ========== */
+.section{
+  max-width:var(--max-w);margin:0 auto;
+  padding:40px 24px 48px;
+}
+.section-header{
+  margin-bottom:28px;
+}
+.section-header h2{
+  font-family:var(--font-display);
+  font-size:26px;font-weight:700;
+  color:var(--ink);
+  display:flex;align-items:center;gap:12px;
+}
+.section-header .sub{
+  font-size:14px;color:var(--text-secondary);
+  margin-top:6px;
+}
+.eyebrow{
+  font-size:12px;font-weight:600;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:8px;display:block;
+}
+
+/* ========== TIER FILTER ========== */
+.tier-tabs{
+  display:flex;gap:8px;margin-bottom:24px;
+  flex-wrap:wrap;
+}
+.tier-tab{
+  padding:8px 22px;border-radius:20px;
+  font-size:13px;font-weight:600;cursor:pointer;
+  border:1.5px solid var(--border);
+  background:var(--card);color:var(--text-secondary);
+  transition:all 0.2s;font-family:var(--font-body);
+}
+.tier-tab:hover{border-color:var(--text-muted);color:var(--text)}
+.tier-tab.active{color:#fff}
+.tier-tab[data-tier="all"].active{background:var(--ink);border-color:var(--ink)}
+.tier-tab[data-tier="chong"].active{background:var(--crimson);border-color:var(--crimson)}
+.tier-tab[data-tier="wen"].active{background:var(--teal);border-color:var(--teal)}
+.tier-tab[data-tier="bao"].active{background:var(--jade);border-color:var(--jade)}
+.tier-tab .count{
+  display:inline-block;margin-left:4px;padding:0 8px;
+  border-radius:10px;font-size:11px;
+  background:rgba(0,0,0,0.06);line-height:1.6;
+}
+.tier-tab.active .count{background:rgba(255,255,255,0.2)}
+
+/* ========== SCHOOL CARDS ========== */
+.school-grid{display:flex;flex-direction:column;gap:16px}
+.school-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  border-left:4px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:20px 24px;
+  transition:all 0.25s;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px 20px;
+}
+.school-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+.school-card.tier-chong{border-left-color:var(--crimson)}
+.school-card.tier-wen{border-left-color:var(--teal)}
+.school-card.tier-bao{border-left-color:var(--jade)}
+
+.school-name{
+  font-size:18px;font-weight:700;color:var(--ink);
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.school-badge{
+  font-size:11px;font-weight:600;padding:2px 10px;
+  border-radius:4px;letter-spacing:0.5px;
+}
+.badge-211{background:#EDE7D7;color:#8B7A3E}
+.badge-key{background:#E3EDF5;color:var(--ink-light)}
+.badge-shuangfei{background:#F0EEEC;color:#6B6B80}
+
+.school-rank{
+  font-family:var(--font-num);
+  font-size:13px;font-weight:600;
+  color:var(--text-secondary);
+  text-align:right;
+}
+.school-rank .rank-val{color:var(--ink);font-size:15px}
+.school-rank .tier-label{
+  display:inline-block;padding:2px 10px;border-radius:4px;
+  font-size:12px;font-weight:600;margin-left:8px;
+}
+.school-rank .tier-label.chong{
+  background:var(--crimson-bg);color:var(--crimson);
+}
+.school-rank .tier-label.wen{
+  background:var(--teal-bg);color:var(--teal);
+}
+.school-rank .tier-label.bao{
+  background:var(--jade-bg);color:var(--jade);
+}
+
+.school-detail{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px 20px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+}
+.detail-col{}
+.detail-col h4{
+  font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:1px;color:var(--text-muted);margin-bottom:8px;
+}
+.major-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.major-list li{
+  font-size:13px;color:var(--text-secondary);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:3px 0;
+}
+.major-list .m-name{}
+.major-list .m-rank{
+  font-family:var(--font-num);
+  font-size:12px;font-weight:500;
+  color:var(--text-muted);white-space:nowrap;
+}
+.major-list .m-rank strong{color:var(--ink)}
+.major-highlight{
+  background:linear-gradient(to right, rgba(196,154,60,0.08), transparent);
+  padding:3px 8px;margin:0 -8px;border-radius:4px;
+}
+.major-highlight .m-name{font-weight:600;color:var(--ink)}
+.strong-tag{
+  display:inline-block;font-size:10px;padding:1px 6px;
+  border-radius:3px;background:var(--gold-light);color:#7A6428;
+  font-weight:600;margin-left:6px;
+}
+
+.school-advice{
+  grid-column:1/-1;
+  font-size:13px;
+  padding:10px 14px;
+  border-radius:var(--radius-sm);
+  background:#FAF8F5;
+  color:var(--text-secondary);
+  line-height:1.6;
+  margin-top:4px;
+}
+.school-advice strong{color:var(--ink)}
+
+/* ========== PROVINCE TOGGLE ========== */
+.province-toggle{
+  display:flex;gap:0;margin-bottom:24px;
+  background:var(--paper-dark);border-radius:8px;padding:3px;
+  width:fit-content;
+}
+.province-btn{
+  padding:8px 24px;border-radius:6px;
+  font-size:14px;font-weight:600;cursor:pointer;
+  border:none;background:transparent;
+  color:var(--text-secondary);font-family:var(--font-body);
+  transition:all 0.2s;
+}
+.province-btn.active{
+  background:var(--card);color:var(--ink);
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+}
+.province-section{display:none}
+.province-section.active{display:block}
+
+/* ========== SUMMARY SECTION ========== */
+#summary .card-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.summary-card{
+  background:var(--card);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);text-align:center;
+}
+.summary-card .icon{font-size:32px;margin-bottom:8px}
+.summary-card h3{font-size:16px;font-weight:600;color:var(--ink)}
+.summary-card p{font-size:13px;color:var(--text-secondary);margin-top:4px}
+.summary-card .num-lg{
+  font-family:var(--font-num);font-size:28px;font-weight:700;
+  color:var(--ink);display:block;margin-top:4px;
+}
+.summary-card.tier-chong .num-lg{color:var(--crimson)}
+.summary-card.tier-wen .num-lg{color:var(--teal)}
+.summary-card.tier-bao .num-lg{color:var(--jade)}
+
+.allocation-bar{
+  background:var(--card);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
+.allocation-bar h3{
+  font-size:15px;font-weight:600;color:var(--ink);
+  margin-bottom:12px;
+}
+.bar-track{
+  display:flex;height:32px;border-radius:8px;overflow:hidden;
+  margin-bottom:8px;
+}
+.bar-segment{
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;
+  transition:width 0.4s;
+}
+.bar-segment.chong{background:var(--crimson)}
+.bar-segment.wen{background:var(--teal)}
+.bar-segment.bao{background:var(--jade)}
+.bar-legend{display:flex;gap:20px;font-size:13px;color:var(--text-secondary)}
+.bar-legend span{display:flex;align-items:center;gap:6px}
+.bar-legend .swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+
+/* ========== FOOTER ========== */
+.page-footer{
+  text-align:center;padding:32px 24px;
+  color:var(--text-muted);font-size:13px;
+  border-top:1px solid var(--border);
+  margin-top:16px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .hero-score{font-size:64px}
+  .hero-rank{font-size:22px}
+  .hero-stats{justify-content:flex-start}
+  .school-detail{grid-template-columns:1fr}
+  #summary .card-trio{grid-template-columns:1fr}
+  .school-card{grid-template-columns:1fr}
+  .school-rank{text-align:left;margin-top:4px}
+}
+@media(max-width:480px){
+  .hero{padding:40px 16px 36px}
+  .hero-score{font-size:48px}
+  .hero-tags{gap:6px}
+  .section{padding:28px 16px 36px}
+  .school-card{padding:16px}
+  .detail-col h4{font-size:11px}
+  .bar-legend{gap:12px;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0.01ms!important;animation-duration:0.01ms!important}
+}
+
+/* ========== LOADING ANIM ========== */
+.fade-in{animation:fadeUp 0.6s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.delay-1{animation-delay:0.1s}
+.delay-2{animation-delay:0.2s}
+.delay-3{animation-delay:0.3s}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">2026 · 湖北高考志愿策略报告</div>
+    <div class="hero-grid">
+      <div class="hero-main fade-in">
+        <div class="hero-score-wrapper">
+          <span class="hero-score">594</span>
+          <span class="hero-rank">#27,263 <small>物理类</small></span>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag">🏅 <strong>物化生</strong></span>
+          <span class="hero-tag">📈 超特招线 <strong>+65分</strong></span>
+          <span class="hero-tag">🇬🇧 <strong>英语</strong> 优势</span>
+          <span class="hero-tag">🎯 工科方向</span>
+        </div>
+        <p class="hero-desc">
+          结合分数、位次与学科优势，筛选出省内省外最适配的工科与航空类院校及专业。
+        </p>
+      </div>
+      <div class="hero-stats fade-in delay-1">
+        <div class="stat-card"><span class="num" style="color:#7AC4C0">435</span><span class="lbl">本科线</span></div>
+        <div class="stat-card"><span class="num" style="color:#C49A3C">529</span><span class="lbl">特招线</span></div>
+        <div class="stat-card highlight"><span class="num">594</span><span class="lbl">你的分数</span></div>
+      </div>
+    </div>
+    <!-- rank ladder -->
+    <div class="rank-ladder fade-in delay-2">
+      <div class="ladder-item"><span class="dot"></span><span class="lbl">本科线 435</span></div>
+      <div class="ladder-item"><span class="bar"></span><span class="dot"></span><span class="lbl">特招线 529</span></div>
+      <div class="ladder-item"><span class="bar"></span><span class="dot filled"></span><span class="lbl" style="color:#fff">你 594</span></div>
+      <div class="ladder-item"><span class="bar"></span><span class="dot"></span><span class="lbl">600+ 23,608人</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav class="page-nav" id="pageNav">
+  <div class="nav-inner">
+    <button class="nav-link active" data-target="hubei">🏠 省内院校</button>
+    <button class="nav-link" data-target="shengwai">🌏 省外院校</button>
+    <button class="nav-link" data-target="aviation">✈️ 航空院校</button>
+    <button class="nav-link" data-target="summary">📊 志愿策略</button>
+  </div>
+</nav>
+
+<!-- ===== HUBEI SECTION ===== -->
+<section class="section" id="hubei">
+  <div class="section-header fade-in">
+    <span class="eyebrow">Province</span>
+    <h2>湖北省内院校</h2>
+    <p class="sub">按位次排序 · 普通类招生</p>
+  </div>
+
+  <div class="province-toggle fade-in delay-1">
+    <button class="province-btn active" data-view="all">全部院校</button>
+  </div>
+
+  <div class="tier-tabs fade-in delay-1">
+    <button class="tier-tab active" data-tier="all">全部 <span class="count">7</span></button>
+    <button class="tier-tab" data-tier="chong">🔥 冲 <span class="count">2</span></button>
+    <button class="tier-tab" data-tier="wen">✅ 稳 <span class="count">2</span></button>
+    <button class="tier-tab" data-tier="bao">🛡 保 <span class="count">3</span></button>
+  </div>
+
+  <div class="school-grid" id="hubeiGrid">
+    <!-- Schools injected by JS -->
+  </div>
+</section>
+
+<!-- ===== SHENGWAI SECTION ===== -->
+<section class="section" id="shengwai">
+  <div class="section-header fade-in">
+    <span class="eyebrow">Out of Province</span>
+    <h2>省外院校</h2>
+    <p class="sub">按位次排序 · 普通类招生</p>
+  </div>
+
+  <div class="tier-tabs fade-in delay-1">
+    <button class="tier-tab active" data-tier="all">全部 <span class="count">34</span></button>
+    <button class="tier-tab" data-tier="chong">🔥 冲 <span class="count">6</span></button>
+    <button class="tier-tab" data-tier="wen">✅ 稳 <span class="count">15</span></button>
+    <button class="tier-tab" data-tier="bao">🛡 保 <span class="count">13</span></button>
+  </div>
+
+  <div class="school-grid" id="shengwaiGrid">
+    <!-- Schools injected by JS -->
+  </div>
+</section>
+
+<!-- ===== AVIATION SECTION ===== -->
+<section class="section" id="aviation">
+  <div class="section-header fade-in">
+    <span class="eyebrow">Aviation & Aerospace</span>
+    <h2>✈️ 航空类院校</h2>
+    <p class="sub">飞行器动力工程 / 飞行器设计与工程 / 适航技术等方向</p>
+  </div>
+
+  <div class="tier-tabs fade-in delay-1">
+    <button class="tier-tab active" data-tier="all">全部 <span class="count">4</span></button>
+    <button class="tier-tab" data-tier="chong">🔥 冲 <span class="count">1</span></button>
+    <button class="tier-tab" data-tier="wen">✅ 稳 <span class="count">3</span></button>
+    <button class="tier-tab" data-tier="bao">🛡 保 <span class="count">0</span></button>
+  </div>
+
+  <div class="school-grid" id="aviationGrid">
+    <!-- Schools injected by JS -->
+  </div>
+</section>
+
+<!-- ===== SUMMARY SECTION ===== -->
+<section class="section" id="summary">
+  <div class="section-header fade-in">
+    <span class="eyebrow">Strategy</span>
+    <h2>志愿填报策略</h2>
+    <p class="sub">45个院校专业组志愿分配建议</p>
+  </div>
+
+  <div class="card-trio fade-in delay-1">
+    <div class="summary-card tier-chong">
+      <div class="icon">🔥</div>
+      <h3>冲刺志愿</h3>
+      <p>位次 21,000~25,000</p>
+      <span class="num-lg">10 个</span>
+      <p style="font-size:12px;color:var(--text-muted)">占 22%</p>
+    </div>
+    <div class="summary-card tier-wen">
+      <div class="icon">✅</div>
+      <h3>稳妥志愿</h3>
+      <p>位次 25,000~35,000</p>
+      <span class="num-lg">22 个</span>
+      <p style="font-size:12px;color:var(--text-muted)">占 49%</p>
+    </div>
+    <div class="summary-card tier-bao">
+      <div class="icon">🛡</div>
+      <h3>保底志愿</h3>
+      <p>位次 35,000~50,000</p>
+      <span class="num-lg">13 个</span>
+      <p style="font-size:12px;color:var(--text-muted)">占 29%</p>
+    </div>
+  </div>
+
+  <div class="allocation-bar fade-in delay-2">
+    <h3>📊 45个专业组分配比例</h3>
+    <div class="bar-track">
+      <div class="bar-segment chong" style="width:22%">10</div>
+      <div class="bar-segment wen" style="width:49%">22</div>
+      <div class="bar-segment bao" style="width:29%">13</div>
+    </div>
+    <div class="bar-legend">
+      <span><span class="swatch" style="background:var(--crimson)"></span> 冲 — 位次差 2k~6k</span>
+      <span><span class="swatch" style="background:var(--teal)"></span> 稳 — 位次完全匹配</span>
+      <span><span class="swatch" style="background:var(--jade)"></span> 保 — 位次低于你 6k~20k</span>
+    </div>
+  </div>
+
+  <div class="school-card tier-wen" style="border-left-color:var(--gold);margin-top:12px">
+    <div style="grid-column:1/-1">
+      <div class="school-name" style="font-size:16px">💡 最优路线推荐</div>
+      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
+        <strong>路线 A：工科实力优先</strong><br>
+        武科大06组 → 长沙理工03组 → 西安理工03组 → 成都理工大学08组<br>
+        <span style="color:var(--text-muted)">→ 工科强校组合，位次精准匹配</span>
+      </div>
+      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
+        <strong>路线 B：211招牌优先</strong><br>
+        内蒙古大学01组 → 河北工大02组 → 东北林业大学 → 石河子大学<br>
+        <span style="color:var(--text-muted)">→ 拿211文凭，进校再努力</span>
+      </div>
+      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
+        <strong>路线 C：计算机方向优先</strong><br>
+        湖大计算机类（冲）→ 武科大05组（冲）→ 武科大06组 → 长沙理工03组<br>
+        <span style="color:var(--text-muted)">→ 瞄准IT行业</span>
+      </div>
+      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
+        <strong>路线 E：新工科/区位优先</strong><br>
+        成都理工大学07组（稳）→ 浙江工业大学02组（稳）→ 广东工业大学04组（冲）→ 西安建筑科技大学03组（冲）<br>
+        <span style="color:var(--text-muted)">→ 成都/杭州/广州/西安，城市与学校兼顾</span>
+      </div>
+      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
+        <strong>路线 D：✈️ 航空方向优先</strong><br>
+        南昌航空大学05组（冲）→ 中国民航大学（稳）→ 沈阳航空航天大学（稳）<br>
+        <span style="color:var(--text-muted)">→ 飞行器动力/制造/适航技术，航空制造与民航系统就业（南航7k位次差距过大，不作推荐）</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  本报告基于 2026 年湖北省教育考试院官方数据及 2024-2025 年各校录取位次综合分析 · 数据已更新至2025年
+</footer>
+
+<script>
+// ===== DATA =====
+const YOUR_RANK = 27263;
+
+const schools_hubei = [
+  {
+    name:'武汉科技大学', tier:'chong', badges:['省属工科第一'], rank:21489,
+    desc:'省属工科No.1，材料/冶金全国知名，计算机/自动化/电子热门高分',
+    majors:[
+      {name:'05组 · 计算机类', rank:'21,489', strong:true},
+      {name:'05组 · 自动化类（自动化/机器人）', rank:'21,489', strong:true},
+      {name:'05组 · 自动化类（电信/通信/集成电路）', rank:'21,489', strong:true},
+      {name:'04组 · 自动化（拔尖班）', rank:'17,921'},
+    ],
+    advice:'05组是你最值得冲刺的目标，计算机/自动化在省属院校中就业口碑很好。06/09/07组更稳妥。'
+  },
+  {
+    name:'湖北大学', tier:'chong', badges:['省属重点'], rank:24832,
+    desc:'综合性大学，计算机类收分逐年走高，电子信息方向性价比高',
+    majors:[
+      {name:'计算机类（计科/软工/大数据）', rank:'24,832', strong:true},
+      {name:'电子信息类（通信/电子/AI方向）', rank:'32,837'},
+      {name:'微电子/集成电路/光电', rank:'36,276'},
+      {name:'材料类', rank:'36,276'},
+    ],
+    advice:'计算机类只差2,400位，是最值得冲的志愿之一！电子信息方向32k位次完全匹配。'
+  },
+  {
+    name:'武汉科技大学（低分组）', tier:'wen', badges:['省属工科第一'], rank:29555,
+    desc:'06/09/07组位次在29k~32k之间，对你来说完全稳妥',
+    majors:[
+      {name:'06组 · 材料物理/工程力学/统计学/安全工程', rank:'29,555'},
+      {name:'09组 · 材料类/冶金/能源与动力/储能科学/应用化学', rank:'30,847'},
+      {name:'07组 · 机械类/光电信息/交通工程/工业设计', rank:'32,193'},
+    ],
+    advice:'你的主战场！06组29,555位次是稳档核心，含材料物理/安全工程等。07组含机械类（机械工程/智能制造/车辆工程），是你的工科好选择。'
+  },
+  {
+    name:'三峡大学', tier:'wen', badges:['水利/电气特色'], rank:32193,
+    desc:'电气全国知名（国家电网校招大户），水利全国第4，工科性价比极高',
+    majors:[
+      {name:'09组 · 智慧水利拔尖班/新能源拔尖班/自动化拔尖班', rank:'32,193', strong:true},
+      {name:'10组 · 水利水电工程/电气工程/机械设计制造', rank:'46,757'},
+      {name:'11组 · 计算机科学与技术/通信工程/自动化', rank:'49,947'},
+    ],
+    advice:'09组32,193位次你完全稳上！含智慧水利、新能源、自动化三个拔尖实验班。10组的水利/电气是传统王牌，位次比你低近20k，保底无忧。'
+  },
+  {
+    name:'武汉工程大学', tier:'bao', badges:['化工特色强校'], rank:47563,
+    desc:'化工与制药国家级特色专业，自动化/计算机性价比高（2025数据）',
+    majors:[
+      {name:'06组（物化）· 计算机/自动化/工科', rank:'47,563'},
+      {name:'05组（物化）· 特色实验班（电气/计算机/AI）', rank:'28,957'},
+    ],
+    advice:'完全保底。06组47k位次，你27k录取无压力。05组28,957也可冲特色班。'
+  },
+  {
+    name:'湖北工业大学', tier:'wen', badges:['工科为主'], rank:39091,
+    desc:'智能制造特色，机械/电气/计算机全面发展（2025数据）',
+    majors:[
+      {name:'08组（物化）· 计算机/电气/机械', rank:'39,091'},
+      {name:'07组（物化）· 工科方向', rank:'32,837'},
+    ],
+    advice:'2025年08组39,091位次，你27k完全稳上。05组22,609位次偏高但可关注。'
+  },
+  {
+    name:'武汉轻工大学', tier:'bao', badges:['省属'], rank:52382,
+    desc:'食品/轻工特色，计算机/自动化性价比高（2025数据）',
+    majors:[
+      {name:'06组（物化）· 计算机类/电气/自动化', rank:'52,382', strong:true},
+      {name:'07组（物化）· 工科方向', rank:'66,664'},
+    ],
+    advice:'2025年06组52k位次，你27k录取毫无压力。计算机类545分左右，进校后分专业看成绩。'
+  },
+];
+
+const schools_shengwai = [
+  {
+    name:'南京工业大学', tier:'wen', badges:['双非强校','南京'], rank:27123,
+    desc:'化工全国第3，材料/安全工程全国顶尖，南京区位优势明显（2025数据）',
+    majors:[
+      {name:'04组（物化）· 化工/材料/安全', rank:'27,123', strong:true},
+    ],
+    advice:'2025年04组27,123位次和你27,263几乎匹配！化工全国第3，南京就业好。去年是冲，今年变稳了。'
+  },
+  {
+    name:'内蒙古大学（211）', tier:'chong', badges:['211','呼和浩特'], rank:23725,
+    desc:'211大学，分数亲民，机械/交通运输/计算机有特色（2025数据）',
+    majors:[
+      {name:'01组（不限）· 会计学/交通运输', rank:'23,725', strong:true},
+      {name:'04组（物化）· 机械工程/电子信息', rank:'30,847'},
+    ],
+    advice:'2025年01组23,725位次，差3.5k可冲。211招牌里对你来说依然可冲的选择。'
+  },
+  {
+    name:'东北林业大学（211）', tier:'wen', badges:['211','哈尔滨'], rank:28232,
+    desc:'211大学，林业工程全国第1，机械/电气/计算机可报（2024数据）',
+    majors:[
+      {name:'05组（物化）· 机械/电气/计算机', rank:'28,232', strong:true},
+      {name:'03组（不限）· 工科方向', rank:'26,392'},
+    ],
+    advice:'211大学里对你位次很友好的选择。05组28,232位次比你低约1k，稳妥可上。'
+  },
+  {
+    name:'长沙理工大学', tier:'wen', badges:['双非顶流','长沙'], rank:34198,
+    desc:'电气进国家电网大户，交通运输亚洲顶尖，工科性价比之王（2025数据）',
+    majors:[
+      {name:'03组（物化）· 电气工程/交通运输/计算机/机械/人工智能', rank:'34,198', strong:true},
+      {name:'03组（物化）· 智能电网/机器人/能源与动力/自动化', rank:'34,198'},
+    ],
+    advice:'省外最推荐！2025年03组34,198位次比你低约7k，更稳了。电气进电网比例全国前10，交通运输亚洲顶尖。'
+  },
+  {
+    name:'西安理工大学', tier:'wen', badges:['双非强校','西安'], rank:30202,
+    desc:'水利水电全国前5，机械/自动化/计算机全面发展',
+    majors:[
+      {name:'03组（物化）· 水利/机械/自动化', rank:'30,202', strong:true},
+      {name:'02组（不限）· 工管方向', rank:'36,276'},
+    ],
+    advice:'水利全国前5，你的位次30k完全稳上。英语好+水利国际工程=高薪路径。'
+  },
+  {
+    name:'河北工业大学（211）', tier:'wen', badges:['211','天津'], rank:29462,
+    desc:'百年工科211，位于天津，电气/机械/化工底蕴深厚',
+    majors:[
+      {name:'02组 · 建筑学（五年制）', rank:'29,462', strong:true},
+    ],
+    advice:'211+天津区位。02组建筑学29,462位次和你匹配，进校后辅修计算机/电气课程。'
+  },
+  {
+    name:'石河子大学（211）', tier:'bao', badges:['211','新疆'], rank:33269,
+    desc:'211大学中位次最友好的选择之一，机械/化工/计算机全部可保',
+    majors:[
+      {name:'04组（物化）· 机械/化工', rank:'33,269'},
+      {name:'02/03组 · 工科专业', rank:'~40,042'},
+    ],
+    advice:'211保底首选。你的位次27k上石河子大学的所有专业都非常稳妥。'
+  },
+  {
+    name:'浙江工业大学', tier:'chong', badges:['省属工科第一','杭州'], rank:22609,
+    desc:'浙江省属工科No.1，化工全国前20，机械/计算机实力强（2025数据，位次上升）',
+    majors:[
+      {name:'03组（物化）· 材料/安全/土木', rank:'22,609', strong:true},
+      {name:'02组（不限）· 管理科学', rank:'16,516'},
+    ],
+    advice:'2025年位次从26,991上升到22,609，竞争加剧。03组差4.6k可冲。杭州区位依然好但需注意位次变化。'
+  },
+  {
+    name:'燕山大学', tier:'chong', badges:['机械强校','秦皇岛'], rank:24832,
+    desc:'原哈工大重型机械系，机械工程全国前20（2025数据，位次上升）',
+    majors:[
+      {name:'04组（物化）· 机械/电气/计算机', rank:'24,832', strong:true},
+      {name:'03组（不限）· 工科方向', rank:'41,362'},
+    ],
+    advice:'2025年04组24,832位次（比2024年上升约3.4k），差2.4k可冲。机械工程是传统王牌。'
+  },
+  {
+    name:'广东工业大学', tier:'chong', badges:['工科强校','广州'], rank:17921,
+    desc:'广东省属工科第一，机械/自动化/计算机实力强（2025数据，位次大幅上升）',
+    majors:[
+      {name:'04组（物化）· 揭阳校区工科', rank:'17,921', strong:true},
+      {name:'02组（不限）· 龙洞校区信息管理', rank:'22,609'},
+    ],
+    advice:'2025年位次从25,224大幅上升到17,921，竞争明显加剧。03组(广州)热门专业需16k以内，对你来说偏难了。'
+  },
+  {
+    name:'成都理工大学（双一流）', tier:'wen', badges:['双一流','成都'], rank:30202,
+    desc:'双一流学科建设高校，地质/石油/核工程为特色（2025数据）',
+    majors:[
+      {name:'08组（不限）· 工科方向', rank:'30,202', strong:true},
+      {name:'16组（物化）· 热门工科', rank:'27,123'},
+    ],
+    advice:'2025年08组30,202位次，比你低约3k，更稳了。双一流招牌+成都宜居，性价比依然高。'
+  },
+  {
+    name:'长春理工大学', tier:'wen', badges:['光电特色','长春'], rank:33269,
+    desc:'"中国光学英才摇篮"，光电信息工程全国前3，军工背景',
+    majors:[
+      {name:'04组（物化）· 光电/电子/计算机', rank:'33,269', strong:true},
+      {name:'02组（不限）· 工科方向', rank:'43,617'},
+    ],
+    advice:'光电是其绝对王牌，全国前3水平。33k位次你稳上。如果对光学/光电感兴趣，这是性价比极高的选择。'
+  },
+  {
+    name:'西安建筑科技大学', tier:'chong', badges:['建筑老八校','西安'], rank:27591,
+    desc:'建筑老八校之一，建筑/土木领域全国顶尖（已排除土木方向）',
+    majors:[
+      {name:'03组（不限）· 环境/材料/工科方向', rank:'27,591', strong:true},
+      {name:'01组（不限）· 工科方向', rank:'29,462'},
+    ],
+    advice:'03组27,591和你仅差328位，几乎零差距！建筑老八校品牌过硬。注意土木/建筑方向已为你排除，关注环境/材料等工科方向。'
+  },
+  {
+    name:'重庆交通大学', tier:'wen', badges:['交通特色','重庆'], rank:32613,
+    desc:'水利工程/交通运输为特色，重庆区位优势，行业认可度高',
+    majors:[
+      {name:'04组（物化）· 水利/交通/机械', rank:'32,613', strong:true},
+      {name:'03组（不限）· 工科方向', rank:'35,306'},
+    ],
+    advice:'位次比你低5k~8k，完全稳妥。水利工程/交通运输是其王牌，非土木方向，就业对口中交/中建等央企。'
+  },
+  {
+    name:'西安邮电大学', tier:'wen', badges:['通信特色','西安'], rank:28901,
+    desc:'西北邮电通信强校，三大运营商重点校招院校',
+    majors:[
+      {name:'02组（不限）· 工科方向', rank:'28,901', strong:true},
+      {name:'03组（物化）· 通信/计算机（热门）', rank:'21,997'},
+    ],
+    advice:'02组28,901位次稳上。但通信/计算机等热门专业需20k以内，进校后分专业需努力。三大运营商校招重点院校。'
+  },
+  {
+    name:'桂林电子科技大学', tier:'bao', badges:['电子特色','桂林'], rank:41438,
+    desc:'电子信息/计算机为特色，广西工科第一校',
+    majors:[
+      {name:'03组（不限）· 工科方向', rank:'41,438'},
+      {name:'04组（物化）· 电子/计算机（热门）', rank:'25,792'},
+    ],
+    advice:'03组41k绝对保底。电子信息/计算机是热门方向，但热门专业需25k以内。作为保底选择性价比不错。'
+  },
+  {
+    name:'东北电力大学', tier:'wen', badges:['电力强校','吉林'], rank:35579,
+    desc:'电力行业"黄埔军校"，电气工程进国家电网比例全国前3（2025数据）',
+    majors:[
+      {name:'01组（物化）· 电气/智能电网/计算机/自动化', rank:'35,579', strong:true},
+      {name:'02组（物化）· 计算机ICC项目/能动', rank:'30,202'},
+    ],
+    advice:'2025年01组35,579位次，比你低约8k，完全稳上。电气582分/23k是王牌但位次偏高。'
+  },
+  {
+    name:'西安科技大学', tier:'wen', badges:['安全特色','西安'], rank:34621,
+    desc:'安全工程全国领先，机械/电子/计算机全面发展，西安工科强校',
+    majors:[
+      {name:'03组（物化）· 安全/机械/电子', rank:'34,621'},
+      {name:'02组（不限）· 工科方向', rank:'35,978'},
+    ],
+    advice:'34k~35k位次稳妥可上。安全工程是其王牌，非土木方向。西安工科院校中性价比不错的选择。'
+  },
+  {
+    name:'天津理工大学', tier:'wen', badges:['工科为主','天津'], rank:37319,
+    desc:'天津市属工科院校，计算机/机械/自动化实力均衡，天津区位好',
+    majors:[
+      {name:'01组（不限）· 工科方向', rank:'37,319'},
+      {name:'02组（物化）· 工科方向', rank:'42,136'},
+    ],
+    advice:'37k~42k位次完全稳妥。天津紧邻北京，就业机会多，工科专业均衡。'
+  },
+  {
+    name:'湖南科技大学', tier:'bao', badges:['湘潭'], rank:42136,
+    desc:'机械/矿业为传统特色，位于湘潭，省内工科院校中性价比高',
+    majors:[
+      {name:'03组（不限）· 机械/工科方向', rank:'42,136'},
+      {name:'04组（物化）· 化工/材料', rank:'46,538'},
+    ],
+    advice:'42k位次保底稳妥。机械工程是其传统强项，非土木方向。'
+  },
+  {
+    name:'南华大学', tier:'bao', badges:['核工程特色','衡阳'], rank:44326,
+    desc:'核工程全国知名（原核工业部直属），医学/工科并重',
+    majors:[
+      {name:'03组（物化）· 核工程/机械/电子', rank:'44,326', strong:true},
+      {name:'02组（不限）· 工科方向', rank:'45,051'},
+    ],
+    advice:'44k位次绝对保底。核工程是其王牌（全国前5），中核集团校招重点。对核能感兴趣是非常独特的选择。'
+  },
+  {
+    name:'中北大学', tier:'bao', badges:['军工背景','太原'], rank:46538,
+    desc:'原兵器工业部直属，仪器科学/兵器科学全国领先，军工背景深厚',
+    majors:[
+      {name:'03组（物化）· 仪器/机械/电子', rank:'46,538'},
+      {name:'01组（不限）· 工科方向', rank:'53,258'},
+    ],
+    advice:'46k位次保底。军工背景（"人民兵工第一校"），仪器科学/兵器科学是其王牌，特色鲜明。'
+  },
+  {
+    name:'青岛科技大学', tier:'bao', badges:['化工特色','青岛'], rank:48019,
+    desc:'化工/橡胶材料全国知名（原化工部直属），青岛沿海区位',
+    majors:[
+      {name:'01组（不限）· 化工/材料/工科', rank:'48,019'},
+      {name:'02组（物化）· 工科方向', rank:'58,872'},
+    ],
+    advice:'48k位次保底。橡胶/化工材料是其传统王牌，青岛城市环境好。'
+  },
+  {
+    name:'江苏科技大学', tier:'chong', badges:['船舶特色','镇江'], rank:27591,
+    desc:'船舶与海洋工程全国前10，原船舶工业部直属，行业特色鲜明',
+    majors:[
+      {name:'06组（物化）· 船舶海洋/计算机/人工智能', rank:'27,591', strong:true},
+      {name:'04组（物化）· 机械类/电子信息/能源动力', rank:'28,901'},
+      {name:'02组（不限）· 工科方向', rank:'31,969'},
+    ],
+    advice:'06组27,591和你仅差328位，压线匹配！船舶海洋工程是王牌，全国船舶行业认可度极高。非土木方向，行业特色独一无二。'
+  },
+  {
+    name:'浙江理工大学', tier:'wen', badges:['杭州工科'], rank:30080,
+    desc:'杭州市属工科院校，纺织科学与工程全国领先，机械/计算机实力均衡',
+    majors:[
+      {name:'03组（物化）· 机械/电子/计算机', rank:'30,080'},
+      {name:'02组（不限）· 工科方向', rank:'30,713'},
+    ],
+    advice:'30k位次稳妥可上。杭州互联网/制造业就业机会多，纺织工程全国领先但非土木方向，机械/计算机也可选。'
+  },
+  {
+    name:'华东交通大学', tier:'wen', badges:['交通特色','南昌'], rank:31969,
+    desc:'原铁道部直属，轨道交通/机械/电气为特色，铁路系统校招重点',
+    majors:[
+      {name:'04组（物化）· 轨道交通/机械/电子', rank:'31,969'},
+      {name:'03组（不限）· 工科方向', rank:'36,659'},
+    ],
+    advice:'31k位次稳妥。原铁道部直属，轨道交通是其王牌，进铁路系统优势大。非土木方向。'
+  },
+  {
+    name:'哈尔滨理工大学', tier:'bao', badges:['哈尔滨'], rank:38679,
+    desc:'原机械工业部直属，电气/机械/计算机实力均衡，工科底蕴厚',
+    majors:[
+      {name:'02组（物化）· 电气/机械/计算机', rank:'38,679'},
+      {name:'01组（不限）· 工科方向', rank:'42,855'},
+    ],
+    advice:'38k位次保底。电气工程是其王牌（绝缘技术全国知名），哈电集团校招重点。'
+  },
+  {
+    name:'沈阳工业大学', tier:'bao', badges:['沈阳'], rank:40713,
+    desc:'原机械工业部直属，电气/机械为特色，沈阳工科强校',
+    majors:[
+      {name:'01组（物化）· 电气/机械/工科', rank:'40,713'},
+    ],
+    advice:'40k位次保底。电气工程是其王牌（电机与电器国家重点学科），非土木方向。'
+  },
+  {
+    name:'西安工业大学', tier:'bao', badges:['兵工七子','西安'], rank:37319,
+    desc:'兵工七子之一，军工背景，测控/机械/计算机为特色',
+    majors:[
+      {name:'03组（物化）· 计算机（卓越班）/机械/测控', rank:'37,319'},
+      {name:'02组（不限）· 工科方向', rank:'38,007'},
+    ],
+    advice:'37k位次保底。"兵工七子"之一，军工行业认可度高。计算机卓越班32k是亮点。'
+  },
+  {
+    name:'石家庄铁道大学', tier:'bao', badges:['铁路特色','石家庄'], rank:51834,
+    desc:'原铁道部直属，铁路/交通为特色，进铁路系统优势大',
+    majors:[
+      {name:'02/04组 · 铁道工程/机械/交通', rank:'51,834'},
+    ],
+    advice:'51k位次保底。原铁道部直属，进国铁集团系统优势明显，非土木方向有机车/信号等特色专业。'
+  },
+  {
+    name:'兰州交通大学', tier:'bao', badges:['铁路特色','兰州'], rank:48019,
+    desc:'原铁道部直属，轨道交通/信号/运输为特色，西北交通强校',
+    majors:[
+      {name:'02组 · 轨道交通/交通运输', rank:'48,019'},
+    ],
+    advice:'48k位次保底。原铁道部直属，铁路系统校招重点，交通运输是其王牌。'
+  },
+  {
+    name:'上海工程技术大学', tier:'wen', badges:['上海工科'], rank:34621,
+    desc:'上海市属应用型工科大学，贴近产业，上海就业优势明显',
+    majors:[
+      {name:'01组（物化）· 工科方向', rank:'34,621'},
+    ],
+    advice:'34k位次稳妥。上海区位好，就业机会多，贴近产业的应用型工科培养模式是其特色。'
+  },
+  {
+    name:'大连交通大学', tier:'bao', badges:['铁路特色','大连'], rank:39348,
+    desc:'原铁道部直属，轨道车辆/机械/信号为特色，铁路系统就业',
+    majors:[
+      {name:'03组（不限）· 轨道车辆/机械', rank:'39,348'},
+      {name:'04组（物化）· 工科方向', rank:'42,136'},
+    ],
+    advice:'39k位次保底。原铁道部直属，轨道车辆工程是其王牌，进中车/国铁优势大。'
+  },
+  {
+    name:'华北水利水电大学', tier:'bao', badges:['水利特色','郑州'], rank:50295,
+    desc:'水利水电为特色，原水利部直属，华北水利强校',
+    majors:[
+      {name:'01组（不限）· 水利/工科方向', rank:'50,295'},
+    ],
+    advice:'50k位次保底。水利水电工程是其王牌，原水利部直属，水利系统就业认可度高。'
+  },
+];
+
+const schools_aviation = [
+  {
+    name:'南昌航空大学', tier:'wen', badges:['原航空部直属','南昌'], rank:32193,
+    desc:'原航空工业部直属院校，飞行器专业在最高分组（2025数据，位次下降更易考）',
+    majors:[
+      {name:'05组（物化）· 飞行器制造/动力/设计与工程', rank:'32,193', strong:true},
+      {name:'05组（物化）· 无人驾驶航空器/机械/电子/自动化', rank:'32,193'},
+      {name:'其他组（经管/材料类）全校最低', rank:'~45,178'},
+    ],
+    advice:'2025年05组32,193位次（比2024年下降约4k，更容易了）。你27k可以稳上飞行器专业，不是浪费分数。'
+  },
+  {
+    name:'中国民航大学', tier:'wen', badges:['民航局直属','天津'], rank:31351,
+    desc:'中国民用航空局直属，民航系统"黄埔军校"，就业对口率极高',
+    majors:[
+      {name:'飞行器适航技术', rank:'31,351', strong:true},
+      {name:'工科试验班（航空航天）', rank:'33,957', strong:true},
+      {name:'飞行器质量与可靠性', rank:'36,659'},
+      {name:'工科试验班（智能与计算机）', rank:'29,462'},
+      {name:'交通管理（飞行运行管理）', rank:'29,462'},
+    ],
+    advice:'完全稳妥！飞行器适航技术是该校独有特色专业，全国仅少数院校开设。毕业生进民航局/航空公司/商飞非常吃香，薪资稳定。'
+  },
+  {
+    name:'沈阳航空航天大学', tier:'wen', badges:['原航空部直属','沈阳'], rank:37319,
+    desc:'原航空工业部直属，飞行器动力工程为辽宁省重点学科，老牌航空强校',
+    majors:[
+      {name:'01组（物化）· 飞行器动力工程', rank:'37,319', strong:true},
+      {name:'01组（物化）· 飞行器设计与工程', rank:'37,319', strong:true},
+      {name:'01组（物化）· 航空航天工程', rank:'37,319'},
+    ],
+    advice:'位次比你低10k，非常稳妥！飞行器动力工程是该校王牌，就业主要面向沈飞、成飞、商飞等航空制造企业，行业底蕴深厚。'
+  },
+  {
+    name:'南京航空航天大学（211）', tier:'chong', badges:['211·仅作参照','南京'], rank:7356,
+    desc:'211大学，航空航天类全国顶尖，飞行器设计/动力工程全国前3。但普通批位次要求极高。',
+    majors:[
+      {name:'本科批05组 · 航空航天类（含飞行器设计/动力）', rank:'7,356', strong:true},
+    ],
+    advice:'⚠️ 仅列作参考标杆。本科批最低628分/7,356位，差距约20,000位，不建议作为实际志愿填报。南航的航空航天类在全国是顶尖水平，可作为努力方向参考。'
+  },
+];
+
+// ===== RENDER =====
+function tierLabel(t){
+  if(t==='chong') return '<span class="tier-label chong">🔥 冲</span>';
+  if(t==='wen') return '<span class="tier-label wen">✅ 稳</span>';
+  return '<span class="tier-label bao">🛡 保</span>';
+}
+function tierClass(t){
+  if(t==='chong') return 'tier-chong';
+  if(t==='wen') return 'tier-wen';
+  return 'tier-bao';
+}
+
+function renderSchool(s){
+  const badges = s.badges.map(b => {
+    let cls = 'badge-key';
+    if(b.includes('211')) cls = 'badge-211';
+    if(b.includes('双非')) cls = 'badge-shuangfei';
+    return `<span class="school-badge ${cls}">${b}</span>`;
+  }).join('');
+
+  const majorsHtml = s.majors.map(m => {
+    const cls = m.strong ? 'major-highlight' : '';
+    const tag = m.strong ? '<span class="strong-tag">推荐</span>' : '';
+    return `<li class="${cls}"><span class="m-name">${m.name}${tag}</span><span class="m-rank"><strong>${m.rank}</strong></span></li>`;
+  }).join('');
+
+  return `
+    <div class="school-card ${tierClass(s.tier)}" data-tier="${s.tier}">
+      <div>
+        <div class="school-name">${s.name} ${badges}</div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">${s.desc}</div>
+      </div>
+      <div class="school-rank">
+        最低位次 <span class="rank-val">${s.rank.toLocaleString()}</span><br>
+        ${tierLabel(s.tier)}
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">差距 ${Math.abs(YOUR_RANK - s.rank).toLocaleString()}</div>
+      </div>
+      <div class="school-detail">
+        <div class="detail-col">
+          <h4>推荐专业</h4>
+          <ul class="major-list">${majorsHtml}</ul>
+        </div>
+        <div class="detail-col">
+          <h4>报考建议</h4>
+          <div class="school-advice">${s.advice}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+document.getElementById('hubeiGrid').innerHTML = schools_hubei.map(renderSchool).join('');
+document.getElementById('shengwaiGrid').innerHTML = schools_shengwai.map(renderSchool).join('');
+document.getElementById('aviationGrid').innerHTML = schools_aviation.map(renderSchool).join('');
+
+// ===== TIER FILTER =====
+document.querySelectorAll('.tier-tab').forEach(tab => {
+  tab.addEventListener('click', function(){
+    const container = this.closest('.section').querySelector('.school-grid');
+    const tier = this.dataset.tier;
+    this.parentElement.querySelectorAll('.tier-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    container.querySelectorAll('.school-card').forEach(card => {
+      if(tier === 'all' || card.dataset.tier === tier) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ===== NAV SCROLL =====
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(){
+    const target = document.getElementById(this.dataset.target);
+    if(target) {
+      const nav = document.getElementById('pageNav');
+      const offset = nav.offsetHeight;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+
+// Update active nav on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      document.querySelector(`.nav-link[data-target="${entry.target.id}"]`)?.classList.add('active');
+    }
+  });
+}, {threshold:0.2, rootMargin:'-80px 0px 0px 0px'});
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
