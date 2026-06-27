@@ -1112,8 +1112,7 @@ try {
   document.getElementById('aviationGrid').innerHTML = schools_aviation.map(renderSchool).join('');
 } catch(e) {
   document.body.innerHTML += '<div style="padding:20px;color:#C73E3A;font-size:14px">⚠️ 加载异常，请刷新</div>';
-  }
-});
+}
 
 // ===== TIER FILTER =====
 document.querySelectorAll('.tier-tab').forEach(tab => {
