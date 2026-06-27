@@ -1105,14 +1105,13 @@ function renderSchool(s){
   `;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  try {
-    document.getElementById('hubeiGrid').innerHTML = schools_hubei.map(renderSchool).join('');
-    document.getElementById('shengwaiGrid').innerHTML = schools_shengwai.map(renderSchool).join('');
-    document.getElementById('jiangzheGrid').innerHTML = schools_jiangzhe.map(renderSchool).join('');
-    document.getElementById('aviationGrid').innerHTML = schools_aviation.map(renderSchool).join('');
-  } catch(e) {
-    document.getElementById('hubeiGrid').innerHTML = '<div style="padding:20px;color:#C73E3A">⚠️ 数据加载异常，请刷新重试</div>';
+try {
+  document.getElementById('hubeiGrid').innerHTML = schools_hubei.map(renderSchool).join('');
+  document.getElementById('shengwaiGrid').innerHTML = schools_shengwai.map(renderSchool).join('');
+  document.getElementById('jiangzheGrid').innerHTML = schools_jiangzhe.map(renderSchool).join('');
+  document.getElementById('aviationGrid').innerHTML = schools_aviation.map(renderSchool).join('');
+} catch(e) {
+  document.body.innerHTML += '<div style="padding:20px;color:#C73E3A;font-size:14px">⚠️ 加载异常，请刷新</div>';
   }
 });
 
@@ -1127,4 +1126,36 @@ document.querySelectorAll('.tier-tab').forEach(tab => {
       if(tier === 'all' || card.dataset.tier === tier) {
         card.style.display = '';
       } else {
-        card.style.d
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ===== NAV SCROLL =====
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(){
+    const target = document.getElementById(this.dataset.target);
+    if(target) {
+      const nav = document.getElementById('pageNav');
+      const offset = nav.offsetHeight;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+
+// Update active nav on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      document.querySelector(`.nav-link[data-target="${entry.target.id}"]`)?.classList.add('active');
+    }
+  });
+}, {threshold:0.2, rootMargin:'-80px 0px 0px 0px'});
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
