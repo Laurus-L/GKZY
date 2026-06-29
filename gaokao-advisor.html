@@ -1147,4 +1147,68 @@ function renderSchool(s){
       </div>
       <div class="school-detail">
         <div class="detail-col">
-          <h
+          <h4>推荐专业</h4>
+          <ul class="major-list">${majorsHtml}</ul>
+        </div>
+        <div class="detail-col">
+          <h4>报考建议</h4>
+          <div class="school-advice">${s.advice}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+try {
+  document.getElementById('hubeiGrid').innerHTML = schools_hubei.map(renderSchool).join('');
+  document.getElementById('shengwaiGrid').innerHTML = schools_shengwai.map(renderSchool).join('');
+  document.getElementById('jiangzheGrid').innerHTML = schools_jiangzhe.map(renderSchool).join('');
+  document.getElementById('aviationGrid').innerHTML = schools_aviation.map(renderSchool).join('');
+} catch(e) {
+  document.body.innerHTML += '<div style="padding:20px;color:#C73E3A;font-size:14px">⚠️ 加载异常，请刷新</div>';
+}
+
+// ===== TIER FILTER =====
+document.querySelectorAll('.tier-tab').forEach(tab => {
+  tab.addEventListener('click', function(){
+    const container = this.closest('.section').querySelector('.school-grid');
+    const tier = this.dataset.tier;
+    this.parentElement.querySelectorAll('.tier-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    container.querySelectorAll('.school-card').forEach(card => {
+      if(tier === 'all' || card.dataset.tier === tier) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ===== NAV SCROLL =====
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(){
+    const target = document.getElementById(this.dataset.target);
+    if(target) {
+      const nav = document.getElementById('pageNav');
+      const offset = nav.offsetHeight;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+
+// Update active nav on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      document.querySelector(`.nav-link[data-target="${entry.target.id}"]`)?.classList.add('active');
+    }
+  });
+}, {threshold:0.2, rootMargin:'-80px 0px 0px 0px'});
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
