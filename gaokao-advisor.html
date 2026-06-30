@@ -449,7 +449,7 @@ body{
 .roadmap li:last-child{border-left:2px solid transparent}
 .roadmap li .yr{display:inline-block;font-size:11px;font-weight:600;color:var(--gold);margin-right:8px}
 .footer{text-align:center;padding:24px;font-size:13px;color:var(--text2)}
-@media(max-width:600px){.pros-cons{grid-template-columns:1fr}
+@media(max-width:600px){.pros-cons{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -515,10 +515,10 @@ body{
   </div>
 
   <div class="tier-tabs fade-in delay-1">
-    <button class="tier-tab active" data-tier="all">全部 <span class="count">7</span></button>
+    <button class="tier-tab active" data-tier="all">全部 <span class="count">6</span></button>
     <button class="tier-tab" data-tier="chong">🔥 冲 <span class="count">2</span></button>
     <button class="tier-tab" data-tier="wen">✅ 稳 <span class="count">2</span></button>
-    <button class="tier-tab" data-tier="bao">🛡 保 <span class="count">3</span></button>
+    <button class="tier-tab" data-tier="bao">🛡 保 <span class="count">2</span></button>
   </div>
 
   <div class="school-grid" id="hubeiGrid">
@@ -864,40 +864,30 @@ body{
     </div>
   </div>
 
-  <div class="school-card tier-wen" style="border-left-color:var(--gold);margin-top:12px">
-    <div style="grid-column:1/-1">
-      <div class="school-name" style="font-size:16px">💡 路线推荐 · 省外优先冲，省内名额多兜底</div>
-      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
-        <strong>路线 A（省外优先 · 工科实力）</strong><br>
-        冲：成都理工08组(机械6人/网安2人) → 江苏大学02组(计算机2人同组)<br>
-        稳：长沙理工03组(AI/电气34k稳) → 西安理工03组(水利/机械30k稳)<br>
-        保：武科大06组(材料/安全29k) → 湖工大08组(计算机39k)<br>
-        <span style="color:var(--text-muted)">→ 省外优先尝试，省内兜底保障</span>
-      </div>
-      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
-        <strong>路线 B（省外优先 · AI/计算机）</strong><br>
-        冲：湖北大学C10316组(计算机230人24k) → 武科大05组(计算机245人同组21k)<br>
-        稳：西安邮电02组(通信/网安28k稳) → 长沙理工03组(计算机/AI34k稳)<br>
-        保：湖工大/武工程(计算机39k+)<br>
-        <span style="color:var(--text-muted)">→ 省外先冲CS，省内名额多兜底</span>
-      </div>
-      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
-        <strong>路线 C（省外优先 · 江浙地区）</strong><br>
-        冲：浙江工业大学03组(计算机5人22k) → 江苏大学02组(计算机2人同组27k)<br>
-        稳：浙江理工03组(机械/电子30k) → 南京工业04组(化工27k稳)<br>
-        保：常州大学/苏州科技大学(37k+)<br>
-        <span style="color:var(--text-muted)">→ 江浙区位好，省内名额多不怕滑档</span>
-      </div>
-      <div class="school-advice" style="margin-top:8px;background:linear-gradient(135deg,#FAF8F5,#F5F1EB)">
-        <strong>路线 D（省外优先 · 电气/航空）</strong><br>
-        冲：东北电力01组(电气10人+自动化5人同组35k稳)<br>
-        稳：南昌航空05组(飞行器类20人32k稳) → 沈阳航空航天(37k稳)<br>
-        保：三峡大学10组(电气8人/水利8人46k)<br>
-        <span style="color:var(--text-muted)">→ 电力航空有特色，省内保底无压力</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="section" id="celue">
+<div class="section-header fade-in" style="margin-bottom:16px"><span class="eyebrow">Reach</span><h2>🔥 冲刺 20k~26k</h2></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">武汉科技大学 <span class="badge badge-rank">#150</span> <span class="badge badge-eval">机械B</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">省属工科No.1 🆕2026 💻计算机245人+🤖自动化106人+📡电子148人 同组可选</div></div><div class="school-rank">最低位次 <span class="rank-val">21,489</div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">05组是你最值得冲刺的目标，计算机/自动化在省属院校中就业口碑很好。名额充裕推荐主冲。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">浙江工业大学 <span class="badge badge-rank">#62</span> <span class="badge badge-eval">化工A-</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">浙江省属工科No.1 🆕2026 💻计算机5人+⚙️机械4人+🤖机器人2人</div></div><div class="school-rank">最低位次 <span class="rank-val">22,609</div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">化工A-全国前10，计算机方向需冲。杭州就业好，双非第一。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">河南大学(双一流) <span class="badge badge-rank">#100</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">双一流 🆕2026 💻计算机类2人(计科+大数据+安全)</div></div><div class="school-rank">最低位次 <span class="rank-val">23,168</div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">双一流招牌但名额极少(2人)，竞争激烈。可作尝试。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">燕山大学 <span class="badge badge-rank">#100</span> <span class="badge badge-eval">机械A-</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">原哈工大重型机械系 🆕2026 ⚙️机械7人+💻计算机6人</div></div><div class="school-rank">最低位次 <span class="rank-val">24,832</div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">机械A-全国前10%，计算机方向齐全。第三轮双一流极大概率领跑者。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">天津工业大学(双一流) <span class="badge badge-rank">#160</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">双一流 🆕2025参考 💻计算机2人+🤖AI2人+🛡️网安2人</div></div><div class="school-rank">最低位次 <span class="rank-val">26,551</div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">双一流招牌，天津区位好。热门专业位次偏高。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">江南大学(211) <span class="badge badge-rank">#81</span> <span class="badge badge-eval">食品A+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">🅰️2026新增专业可能降分 🆕无锡211 最低组17,921位</div></div><div class="school-rank"><span class="rank-val">17,921</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">211冲一冲。2026新增专业第一年招生分数可能偏低，值得一试。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">苏州大学(211) <span class="badge badge-rank">#43</span> <span class="badge badge-eval">医学B+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">🅰️2026智慧交通新专业+AI/机器人扩招100人 苏州211 最低组9,153位</div></div><div class="school-rank"><span class="rank-val">9,153</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">差距较大但2026扩招+新专业可能降分。放冲一档碰运气。</div></div></div></div>
+<div class="school-card tier-chong" data-tier="chong" style="margin-bottom:10px"><div><div class="school-name">重庆邮电大学 <span class="badge badge-rank">#170</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">05组(20,901) — 💻计算机4人+🤖智能技术类8人(含AI)+🛡网安10人 通信强校</div></div><div class="school-rank"><span class="rank-val">20,901</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">通信/计算机强校，CS/AI方向齐全。05组20,901位差约6k可冲，值得一试。</div></div></div></div>
+<div class="section-header fade-in" style="margin-bottom:16px;margin-top:24px"><span class="eyebrow">Safe</span><h2>✅ 稳妥 27k~30k ⭐ 主攻</h2></div>
+<div class="school-card tier-wen" data-tier="wen" style="margin-bottom:10px"><div><div class="school-name">江苏大学 <span class="badge badge-rank">#82</span> <span class="badge badge-eval">机械B+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">工科强校 🆕2026 💻计算机2人+⚙️机械4人+⚡电气2人同组</div></div><div class="school-rank"><span class="rank-val">02组(27,123)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">和你27,123零差距！机械B+，同组可选计算机+机械+电气。强烈推荐。</div></div></div></div>
+<div class="school-card tier-wen" data-tier="wen" style="margin-bottom:10px"><div><div class="school-name">南京工业大学 <span class="badge badge-rank">#94</span> <span class="badge badge-eval">化工B+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">化工全国第3 🆕2026 有🤖人工智能2人</div></div><div class="school-rank"><span class="rank-val">04组(27,123)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">和你27,123零差距！化工B+🏆，有人工智能专业。南京就业好。</div></div></div></div>
+<div class="school-card tier-wen" data-tier="wen" style="margin-bottom:10px"><div><div class="school-name">成都理工大学(双一流) <span class="badge badge-rank">#110</span> <span class="badge badge-eval">地质B+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">双一流 🆕2026 ⚙️机械6人+💻网安2人+📊大数据2人</div></div><div class="school-rank"><span class="rank-val">08组(30,202)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">双一流+成都宜居。机械/网安/大数据方向齐全。</div></div></div></div>
+<div class="school-card tier-wen" data-tier="wen" style="margin-bottom:10px"><div><div class="school-name">湖北工业大学 <span class="badge badge-rank">#210</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">智能制造特色 💻计算机/⚡电气/⚙️机械</div></div><div class="school-rank"><span class="rank-val">08组(39,091)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">39k位次保底稳上，计算机/电气方向可选。</div></div></div></div>
+<div class="school-card tier-wen" data-tier="wen" style="margin-bottom:10px"><div><div class="school-name">湖北大学 <span class="badge badge-rank">#130</span> <span class="badge badge-eval">材料B-</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">💻计算机230人 🆕2026新工科扩招170人</div></div><div class="school-rank"><span class="rank-val">C10316组(24,832)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">计算机类招230人名额充裕，新工科扩招。武汉本地。</div></div></div></div>
+<div class="school-card tier-wen" data-tier="wen" style="margin-bottom:10px"><div><div class="school-name">西安邮电大学 <span class="badge badge-rank">#210</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">西北通信强校 🆕2026 📡通信2人+💻计算机1人+🛡️网安2人</div></div><div class="school-rank"><span class="rank-val">02组(28,901)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">信息安全/网安特色，三大运营商校招重点。</div></div></div></div>
+<div class="section-header fade-in" style="margin-bottom:16px;margin-top:24px"><span class="eyebrow">Backup</span><h2>🛡 保底 30k~42k</h2></div>
+<div class="school-card tier-bao" data-tier="bao" style="margin-bottom:10px"><div><div class="school-name">西安理工大学 <span class="badge badge-rank">#115</span> <span class="badge badge-eval">机械B+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">水利全国前5 🆕2026 💻计算机卓越班2人+📊大数据2人</div></div><div class="school-rank"><span class="rank-val">03组(30,202)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">机械B+，水利全国前5。计算机卓越班是亮点。</div></div></div></div>
+<div class="school-card tier-bao" data-tier="bao" style="margin-bottom:10px"><div><div class="school-name">华东交通大学 <span class="badge badge-rank">#215</span> <span class="badge badge-eval">交通B-</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">原铁道部直属 💻计算机2人+📊数据科学2人+🤖自动化3人</div></div><div class="school-rank"><span class="rank-val">04组(31,969)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">轨道交通特色，计算机/数据科学可选。进铁路系统优势大。</div></div></div></div>
+<div class="school-card tier-bao" data-tier="bao" style="margin-bottom:10px"><div><div class="school-name">江苏科技大学 <span class="badge badge-rank">#190</span> <span class="badge badge-eval">船舶B-</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">船舶海洋特色 💻计算机2人+🤖AI2人+🚢船舶海洋</div></div><div class="school-rank"><span class="rank-val">02组(30,847)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">船舶海洋工程是其王牌，计算机/AI方向可选。</div></div></div></div>
+<div class="school-card tier-bao" data-tier="bao" style="margin-bottom:10px"><div><div class="school-name">长沙理工大学 <span class="badge badge-rank">#105</span> <span class="badge badge-eval">土木B+</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">电气/交通强校 🤖有人工智能专业</div></div><div class="school-rank"><span class="rank-val">03组(34,198)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">有人工智能专业！电气进电网比例高，离家近(长沙)。</div></div></div></div>
+<div class="school-card tier-bao" data-tier="bao" style="margin-bottom:10px"><div><div class="school-name">中南民族大学 <span class="badge badge-rank">#250</span> <span class="badge badge-eval">民族学A-</span></div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px">国家民委直属 💻计算机类46人 武汉本地</div></div><div class="school-rank"><span class="rank-val">10组(28,352)</span></div><div class="school-detail"><div class="detail-col"><h4>报考建议</h4><div class="school-advice">计算机类46人名额充裕。武汉本地，国家民委直属。</div></div></div></div>
+</div>
 
 <footer class="page-footer">
   本报告基于 2026 年湖北省教育考试院官方数据及 2024-2025 年各校录取位次综合分析 · 数据已更新至2025年
@@ -989,16 +979,15 @@ const schools_shengwai = [
   },
   {
     name:'东北林业大学（211）', tier:'wen', badges:['211','哈尔滨','📍哈尔滨'], rank:28232, rank2025:85,bestEval:'林业B+',dorm:'🔴部分6-8人间/公共卫浴',
-  desc:'211大学，林业工程全国第1，机械/电气/计算机可报（2024数据）',
+  desc:'🏆211 🆕2026官网确认 💻计算机类4人 05组28k稳',
     majors:[
-      {name:'05组（物化）· 机械/电气/计算机', rank:'28,232', strong:true},
-      {name:'03组（不限）· 工科方向', rank:'26,392'},
+      {name:'05组(物化) 🆕2026 💻计算机类4人/⚙️机械/⚡电气', rank:'28,232', strong:true},
     ],
-    advice:'211大学里对你位次很友好的选择。05组28,232位次比你低约1k，稳妥可上。'
+    advice:'🆕2026计算机类招4人，05组28,232比你低约1k稳妥可上。211招牌。'
   },
   {
     name:'长沙理工大学', tier:'wen', badges:['双非顶流','长沙','📍长沙天心'], rank:34198, rank2025:105,bestEval:'土木B+',dorm:'🟡云塘校区较好/金盆岭旧',
-  desc:'电气进国家电网大户，交通运输亚洲顶尖，工科性价比之王（2025数据）',
+  desc:'电气进国家电网大户，交通运输亚洲顶尖，工科性价比之王（2025数据） [数据:555edu]',
     majors:[
       {name:'03组（物化）· 电气工程/交通运输/计算机/机械/人工智能', rank:'34,198', strong:true},
       {name:'03组（物化）· 智能电网/机器人/能源与动力/自动化', rank:'34,198'},
@@ -1007,7 +996,7 @@ const schools_shengwai = [
   },
   {
     name:'西安理工大学', tier:'wen', badges:['双非强校','西安','📍西安碑林'], rank:30202, rank2025:115,bestEval:'机械B+',dorm:'🟡曲江校区新/金花校区旧',
-  desc:'水利水电全国前5，机械/自动化/计算机全面发展',
+  desc:'水利水电全国前5，机械/自动化/计算机全面发展 [数据:555edu]',
     majors:[
       {name:'03组（物化）· 水利/机械/自动化', rank:'30,202', strong:true},
       {name:'02组（不限）· 工管方向', rank:'36,276'},
@@ -1033,7 +1022,7 @@ const schools_shengwai = [
   },
   {
     name:'燕山大学', tier:'chong', badges:['机械强校','秦皇岛','📍秦皇岛海港'], rank:24832, rank2025:100,bestEval:'机械A-',dorm:'🟡东西校区差异大/部分6人间',
-  desc:'原哈工大重型机械系，机械工程全国前20（2025数据，位次上升）',
+  desc:'原哈工大重型机械系，机械工程全国前20（2025数据，位次上升） [数据:555edu/gaokao.cn]',
     majors:[
       {name:'04组（物化）· 机械/电气/计算机', rank:'24,832', strong:true},
       {name:'03组（不限）· 工科方向', rank:'41,362'},
@@ -1087,7 +1076,7 @@ const schools_shengwai = [
   },
   {
     name:'西安邮电大学', tier:'wen', badges:['通信特色','西安','📍西安长安'], rank:28901, rank2025:210,bestEval:'信息C+',dorm:'🟢长安校区标准化宿舍',
-  desc:'西北邮电通信强校，三大运营商重点校招院校',
+  desc:'西北邮电通信强校，三大运营商重点校招院校 [数据:555edu]',
     majors:[
       {name:'02组（不限）· 工科方向', rank:'28,901', strong:true},
       {name:'03组（物化）· 通信/计算机（热门）', rank:'21,997'},
@@ -1168,7 +1157,7 @@ const schools_shengwai = [
   },
   {
     name:'华东交通大学', tier:'wen', badges:['交通特色','南昌','📍南昌经开'], rank:31969, rank2025:215,bestEval:'交通B-',dorm:'🟢南区公寓独立卫浴',
-  desc:'原铁道部直属，轨道交通/机械/电气为特色，铁路系统校招重点',
+  desc:'原铁道部直属，轨道交通/机械/电气为特色，铁路系统校招重点 [数据:555edu]',
     majors:[
       {name:'04组（物化）· 轨道交通/机械/电子', rank:'31,969'},
       {name:'03组（不限）· 工科方向', rank:'36,659'},
@@ -1244,13 +1233,13 @@ const schools_shengwai = [
   },
   {
     name:'北京信息科技大学', tier:'wen', badges:['北京IT','📍北京'], rank:27750, rank2025:220,bestEval:'仪器B',dorm:'🟡北京校区一般/清河校区较新',
-  desc:'🆕北京IT特色院校 💻计算机/信息安全/大数据，01组27,750和你接近',
-    majors:[{name:'01组(不限) 💻 计算机/大数据/信息安全', rank:'27,750', strong:true},{name:'02组(物化) 🔥 计算机/电子(热门)', rank:'20,410'}],
-    advice:'01组27,750和你仅差不到500位！北京IT就业优势大，计算机/信息安全方向很好。'
+  desc:'⚠️01组27,750不含IT！AI/计算机在02组(物化)20k偏高 [数据:gk100/555edu]',
+    majors:[{name:'02组(物化) 🤖AI(勤信)2人/💻计算机2人/🛡️安全2人', rank:'20,410', strong:true},{name:'01组(不限) 📊 信息管理/电商/统计(非IT)', rank:'27,750'}],
+    advice:'01组27,750只有管理类，不含AI/计算机。IT专业在02组20,410需冲。建议调为冲档。'
   },
   {
     name:'天津工业大学（双一流）', tier:'wen', badges:['双一流','📍天津'], rank:26551, rank2025:160,bestEval:'纺织A+',dorm:'🟢新校区标准四人间空调',
-  desc:'🆕双一流🏆04组26,551稳上 💻计算机/AI/网安/自动化方向齐全',
+  desc:'🆕双一流🏆04组26,551稳上 💻计算机/AI/网安/自动化方向齐全 [数据:gk100/555edu]',
     majors:[{name:'04组(物化) 💻计算机/AI/网安/自动化/电气', rank:'26,551', strong:true}],
     advice:'04组26,551稳上，双一流招牌。但热门计算机(597/15k)偏高，进校后可争取。'
   },
@@ -1268,7 +1257,7 @@ const schools_shengwai = [
   },
   {
     name:'河南大学（双一流）', tier:'chong', badges:['双一流','📍开封'], rank:23168, rank2025:100,bestEval:'生物学B+',dorm:'🟡郑州校区新/开封老校区旧',
-  desc:'🆕双一流🏆计算机类(计科+大数据+安全)23k可冲',
+  desc:'🆕双一流🏆计算机类(计科+大数据+安全)23k可冲 [数据:555edu]',
     majors:[{name:'05组(物化) 💻计算机类(计科/大数据/信息安全)', rank:'23,168', strong:true}],
     advice:'05组23,168位次差4k可冲。双一流+计算机类含大数据/安全方向，性价比高。'
   },
@@ -1286,7 +1275,7 @@ const schools_shengwai = [
   },
   {
     name:'集美大学', tier:'wen', badges:['📍厦门'], rank:30847, rank2025:240,bestEval:'水产B+',dorm:'🟢本部四人间空调',
-  desc:'🆕厦门区位好 计算机569/30,847稳上 航海/财经特色',
+  desc:'🆕厦门区位好 计算机569/30,847稳上 航海/财经特色 [数据:gk100]',
     majors:[{name:'05组(物化) 💻计算机科学与技术', rank:'30,847'}],
     advice:'30,847稳上。厦门城市好，航海/财经是其传统强项，计算机也可选。'
   },
@@ -1298,7 +1287,7 @@ const schools_shengwai = [
   },
   {
     name:'中南民族大学', tier:'wen', badges:['国家民委直属','📍武汉'], rank:28352, rank2025:250,bestEval:'民族学A-',dorm:'🟢武汉校区四人间空调',
-  desc:'🆕武汉本地 计算机类573/28,352稳 招46人名额充裕',
+  desc:'🆕武汉本地 计算机类573/28,352稳 招46人名额充裕 [数据:555edu/gk100]',
     majors:[{name:'10组(物化) 💻 计算机类(46人)', rank:'28,352', strong:true}],
     advice:'10组28,352稳上，计算机类招46人名额充裕。武汉本地，国家民委直属。'
   },
@@ -1313,7 +1302,7 @@ const schools_shengwai = [
 const schools_jiangzhe = [
   {
     name:'南京工业大学', tier:'wen', badges:['化工强校','南京','📍南京江北'], rank:27123, rank2025:94,bestEval:'化工B+',dorm:'🟢江浦校区四人间空调',
-  desc:'化工全国第3🏆，材料/安全工程全国顶尖，南京区位好（2025）',
+  desc:'化工全国第3🏆，材料/安全工程全国顶尖，南京区位好（2025） [数据:gk100/6617]',
     majors:[
       {name:'04组（物化）· 🧪 化工/材料/安全工程', rank:'27,123', strong:true},
       {name:'04组（物化）· 制药/生物/能源', rank:'27,123'},
@@ -1322,7 +1311,7 @@ const schools_jiangzhe = [
   },
   {
     name:'江苏科技大学', tier:'wen', badges:['船舶特色','镇江','📍镇江'], rank:30847, rank2025:190,bestEval:'船舶B-',dorm:'🟡长山校区新/东校区旧',
-  desc:'船舶与海洋工程全国前10🚢，原船舶工业部直属（2025）',
+  desc:'船舶与海洋工程全国前10🚢，原船舶工业部直属（2025） [数据:555edu/gk100]',
     majors:[
       {name:'02组（不限）· 🚢 船舶与海洋工程', rank:'30,847', strong:true},
       {name:'02组（不限）· 计算机/人工智能/水声工程', rank:'30,847'},
@@ -1331,7 +1320,7 @@ const schools_jiangzhe = [
   },
   {
     name:'浙江工业大学', tier:'chong', badges:['省属工科第一','杭州','📍杭州西湖'], rank:22609, rank2025:62,bestEval:'化工A-',dorm:'🟢屏峰/朝晖校区四人间空调',
-  desc:'浙江省属工科No.1🏆，化工全国前20，机械/计算机实力强（2025位次上升）',
+  desc:'浙江省属工科No.1🏆，化工全国前20，机械/计算机实力强（2025位次上升） [数据:gk100.com/555edu]',
     majors:[
       {name:'03组（物化）· 🧪 材料/安全工程/土木', rank:'22,609', strong:true},
       {name:'03组（物化）· 智能建造/物理', rank:'22,609'},
@@ -1340,9 +1329,9 @@ const schools_jiangzhe = [
   },
   {
     name:'浙江理工大学', tier:'wen', badges:['杭州工科','📍杭州下沙'], rank:30080, rank2025:140,bestEval:'纺织B+',dorm:'🟢下沙校区四人间空调独卫',
-  desc:'杭州市属工科院校，纺织科学与工程全国领先🏆，机械/计算机可（2025）',
+  desc:'🏆纺织全国领先 2026湖北只有⚙️机械类 无计算机/AI专业',
     majors:[
-      {name:'03组（物化）· ⚙️ 机械/电子/计算机', rank:'30,080'},
+      {name:'03组(物化) ⚙️机械设计3人+机械电子3人/📡测控4人', rank:'30,080'},
     ],
     advice:'30k位次稳妥可上。杭州就业机会多，纺织工程全国领先但非土木方向。'
   },
@@ -1545,4 +1534,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
       const nav = document.getElementById('pageNav');
       const offset = nav.offsetHeight;
       const top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
-      window.scrollTo({top, behavior:'smoot
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+</script>
+</body>
+</html>
